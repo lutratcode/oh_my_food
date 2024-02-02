@@ -1,0 +1,309 @@
+// #region set base
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;    
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+:root {
+    --grey: #353535;
+    --grey-2: #EAEAEA;
+    --green-font: #008766;
+    --black: #101010;
+    --white: #fff;
+    --background-color: #F6F6F6;
+    --secondaire: #FF79DA;
+    --tertiaire:#99E2D0;
+    --primaire:#9356DC;
+}
+
+
+.wrapper{
+    margin: 0 auto;
+}
+
+$width-mobile:23.4375rem;
+$width-max-mobile:48rem;
+$width-desktop:60rem;
+$width-max-desktop: 90rem;
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--black);
+    margin: 0 auto;
+    width: $width-mobile;
+    background-color: #000; 
+    @media (min-width: $width-mobile) {
+        width: 100%;
+    }
+    @media (min-width:$width-max-desktop) {
+        width: $width-max-desktop;
+          
+    }
+}
+
+main{
+    background-color: #fff;
+}
+
+
+
+// #endregion
+
+// #region header
+.header {
+    display: flex;
+    align-items: center;
+    height: 63px;
+    background-color: var(--white);
+    @media (min-width:$width-max-desktop) {
+        width: $width-max-desktop;
+        height: 6rem;
+     }
+    padding-bottom: 0.03125rem;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  
+
+    &-goback {
+    height: 63px;
+    background-color: var(--white);
+
+    .header-goback-link {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        padding: 9px;
+        margin-left: 17px;
+        margin-top: 14px;
+        }
+    } 
+}
+ 
+   .header-logo {
+        margin: 0 auto;
+        &-link {
+        display: block;
+        width: 197px;
+        height: 36px;
+        background-image: url(../../assets/images/logo/ohmyfood.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        font-size: 0px;
+        }
+    }
+// #endregion header
+
+
+// #region footer
+    // footer
+    .footer {
+        padding: 1.375rem 1.5625rem;
+        background-color: var(--grey);
+        @media (min-width: $width-desktop) {
+            display: flex;
+            flex-direction: row-reverse;
+            align-content: end;
+            // height: 7.125rem;
+            width: 100%;
+            align-items: flex-end;
+            padding: 1.88rem 1.56rem;
+
+        }
+        &-title {
+            font-family: 'Shrikhand', serif;
+            font-weight: 400;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            @media (min-width: $width-max-mobile) {
+                margin-bottom: 0;
+            }
+        } 
+        &-li {
+            width: 11.5rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-right: 0.12rem;
+
+        }
+        &-li:nth-child(3),
+        &-li:nth-child(4){
+            width: 8.125rem;
+        }
+        &-title a,
+        &-li a {
+        color: var(--white);
+        }
+        ul {
+            @media (min-width: $width-max-mobile) {
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                flex: 1;
+            }
+        }
+    }
+// #endregion footer
+
+
+// #region buttons like 
+// buttons
+    .center {
+        text-align: center;
+    }
+
+    $button-gradient: linear-gradient(193deg, var(--primaire) -11.44%, var(--secondaire) 123.93%);
+    $button-gradient-hover: linear-gradient(201deg, var(--primaire) -5.2%, var(--secondaire) 110.74%);
+    
+ 
+
+    .btn {
+        width: 13.625rem;
+        height: 3.125rem;
+        font-family: Roboto;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        line-height: 3.125rem;
+        color: var(--white);
+        background: $button-gradient;
+        border: none;
+        border-radius: 1.5625rem;
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+       
+      
+        position: relative;
+       z-index: 1;
+        
+
+
+        &:hover {
+            &::after{
+               opacity: 1;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 100%);
+            border-radius: 1.5625rem;
+            box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 250ms;
+        }
+    }
+
+
+    // like icon
+    .like {
+        @for $i from 1 through 4 {
+            #heart-#{$i} {display: none;}
+        }
+
+        label {
+            display: inline-block;
+            width: 1.46rem;
+            height: 1.3125rem;
+            position: absolute;
+            bottom: 2rem;
+            right: 1.75rem;
+            cursor: pointer;
+        }
+        .icon-like{
+            display: block;
+            position: absolute;
+            width: 1.46rem;
+            height: 1.3125rem;
+            z-index: 100;
+            background: url(../../assets/images/icon/like.png) no-repeat;
+
+            
+            &:after{
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                opacity: 0;
+               
+            }
+
+            &:after{
+                background: url(../../assets/images/icon/like-color.png) no-repeat;
+                transition: opacity 0.5s ease-in-out;
+                z-index: 5;
+            }
+
+            @media (min-width:$width-desktop) {
+                  &:hover:after{
+                    opacity: 1;
+                }
+            }
+            }
+          
+        }
+    
+        @for $i from 1 through 4{
+            #heart-#{$i}:checked ~ .icon-like:after {
+                opacity: 1;
+                   }
+                }   
+          
+// #endregion button like
+
+
+// #region card
+
+    .card {
+        position: relative;
+
+        &-img {
+            background-size:cover;
+            background-position: center;
+           
+        }
+
+       
+        .card-palette {
+            .card-img {
+                background-image: url(../../assets/images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg);
+            }
+        }
+
+        .card-enchantee {
+            .card-img {
+                background-image: url(../../assets/images/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg);
+            }
+        }
+        .card-francaise {
+            .card-img {
+                background-image: url(../../assets/images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg);
+            }
+        }
+        .card-delice {
+            .card-img {
+                background-image: url(../../assets/images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg);
+            }
+        }
+
+       
+    }
+
+// #endregion card
